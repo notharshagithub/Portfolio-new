@@ -76,7 +76,7 @@ export const projects = [
     des: "An intelligent travel companion that uses AI to recommend personalized itineraries, local experiences, and hidden gems based on user preferences, budget, and travel style. Features real-time updates and offline accessibility.",
     img: "/p1.png",
     iconLists: ["/re.svg", "/tail.svg", "/ts.svg", "/three.svg", "/fm.svg"],
-    link: "https://aitripplanner-ashy.vercel.app/",
+    link: "https://samrt-trip-planner.vercel.app/",
   },
   {
     id: 2,
