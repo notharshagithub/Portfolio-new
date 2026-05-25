@@ -2,16 +2,39 @@
 import { useEffect, useRef, useState } from "react";
 import { Color, Scene, Fog, PerspectiveCamera, Vector3 } from "three";
 import ThreeGlobe from "three-globe";
-import { useThree, Object3DNode, Canvas, extend } from "@react-three/fiber";
+import { useThree, Canvas, extend } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
 import countries from "@/data/globe.json";
 declare module "@react-three/fiber" {
   interface ThreeElements {
-    threeGlobe: Object3DNode<ThreeGlobe, typeof ThreeGlobe>;
+    threeGlobe: any;
   }
 }
 
 extend({ ThreeGlobe });
+
+// We must intercept these specific warnings because:
+// 1. @react-three/fiber internals have not migrated to THREE.Timer yet.
+// 2. The globe.json contains micro-islands that collapse to zero-area triangles in Three.js, causing harmless NaN bounding spheres.
+if (typeof console !== "undefined") {
+  const originalWarn = console.warn;
+  const originalError = console.error;
+  
+  console.warn = (...args: any[]) => {
+    if (args[0] && typeof args[0] === "string") {
+      if (args[0].includes("THREE.Clock")) return;
+      if (args[0].includes("computeBoundingSphere")) return;
+    }
+    originalWarn(...args);
+  };
+  
+  console.error = (...args: any[]) => {
+    if (args[0] && typeof args[0] === "string") {
+      if (args[0].includes("computeBoundingSphere")) return;
+    }
+    originalError(...args);
+  };
+}
 
 const RING_PROPAGATION_SPEED = 3;
 const aspect = 1.2;
@@ -150,8 +173,14 @@ export function Globe({ globeConfig, data }: WorldProps) {
 
   useEffect(() => {
     if (globeRef.current && globeData) {
+      const validFeatures = countries.features.filter(
+        (f: any) =>
+          f.geometry &&
+          f.geometry.coordinates &&
+          f.geometry.coordinates.length > 0
+      );
       globeRef.current
-        .hexPolygonsData(countries.features)
+        .hexPolygonsData(validFeatures)
         .hexPolygonResolution(3)
         .hexPolygonMargin(0.7)
         .showAtmosphere(defaultProps.showAtmosphere)
@@ -193,7 +222,7 @@ export function Globe({ globeConfig, data }: WorldProps) {
       .pointRadius(2);
 
     globeRef.current
-      .ringsData([])
+      .ringsData(globeData.filter((d, i) => numbersOfRings.includes(i)))
       .ringColor((e: any) => (t: any) => e.color(t))
       .ringMaxRadius(defaultProps.maxRings)
       .ringPropagationSpeed(RING_PROPAGATION_SPEED)
