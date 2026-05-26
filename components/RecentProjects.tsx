@@ -26,7 +26,7 @@ const RecentProjects = () => {
                 window.open(item.link, '_blank', 'noopener,noreferrer');
               }}
             >
-              <div className="relative flex items-center justify-center sm:w-96 w-[80vw] overflow-hidden h-[20vh] lg:h-[30vh] mb-10">
+              <div className="relative flex items-center justify-center sm:w-96 w-[80vw] overflow-hidden h-[20vh] lg:h-[30vh] mb-10 group/img">
                 <div
                   className="relative w-full h-full overflow-hidden lg:rounded-3xl"
                   style={{ backgroundColor: "#13162D" }}
@@ -36,7 +36,7 @@ const RecentProjects = () => {
                 <img
                   src={item.img}
                   alt="cover"
-                  className="z-10 absolute bottom-0"
+                  className="z-10 absolute bottom-0 transition-all duration-500 group-hover/img:scale-105 group-hover/img:rotate-1"
                 />
               </div>
 
@@ -59,7 +59,7 @@ const RecentProjects = () => {
                   {item.iconLists.map((icon, index) => (
                     <div
                       key={index}
-                      className="border border-white/[.2] rounded-full bg-black lg:w-10 lg:h-10 w-8 h-8 flex justify-center items-center"
+                      className="border border-white/[.2] rounded-full bg-black lg:w-10 lg:h-10 w-8 h-8 flex justify-center items-center transition-transform duration-300 hover:-translate-y-1"
                       style={{
                         transform: `translateX(-${5 * index + 2}px)`,
                       }}
@@ -69,11 +69,11 @@ const RecentProjects = () => {
                   ))}
                 </div>
 
-                <div className="flex justify-center items-center">
-                  <p className="flex lg:text-xl md:text-xs text-sm text-purple">
+                <div className="flex justify-center items-center group/btn cursor-pointer">
+                  <p className="flex lg:text-xl md:text-xs text-sm text-purple transition-colors duration-300 group-hover/btn:text-white-100">
                     Check Live Site
                   </p>
-                  <FaLocationArrow className="ms-3" color="#CBACF9" />
+                  <FaLocationArrow className="ms-3 transition-transform duration-300 group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1" color="#CBACF9" />
                 </div>
               </div>
             </PinContainer>
