@@ -7,15 +7,15 @@ const Approach = () => {
   return (
     <section className="w-full py-20">
       <h1 className="heading">
-        My <span className="text-purple">approach</span>
+        My approach & <span className="text-purple">skills</span>
       </h1>
       {/* remove bg-white dark:bg-black */}
       <div className="my-20 flex flex-col lg:flex-row items-center justify-center w-full gap-4">
         {/* add des prop */}
         <Card
-          title="Planning & Strategy"
-          icon={<AceternityIcon order="Phase 1" />}
-          des="I dive deep into understanding the core requirements, technical constraints, and business goals. This phase involves architecture planning and selecting the optimal tech stack."
+          title="Critical Thinking"
+          icon={<AceternityIcon order="Skill 1" />}
+          des="Analyzing complex software engineering challenges down to their fundamental principles. I dissect architecture requirements with technical rigor, ensuring robust, elegant, and highly optimized code bases."
         >
           <CanvasRevealEffect
             animationSpeed={5.1}
@@ -24,9 +24,9 @@ const Approach = () => {
           />
         </Card>
         <Card
-          title="Development & Progress Update"
-          icon={<AceternityIcon order="Phase 2" />}
-          des="Once the architecture is set, I cue my lofi playlist and dive into coding. I prioritize writing clean, scalable, and maintainable code while ensuring seamless team communication."
+          title="Fast Learning"
+          icon={<AceternityIcon order="Skill 2" />}
+          des="Equipped with a high learning velocity and deep adaptability. I master any cutting-edge programming language, framework, or developer tool extremely fast, rapidly adopting and thriving in any environment."
         >
           <CanvasRevealEffect
             animationSpeed={3}
@@ -44,9 +44,9 @@ const Approach = () => {
           {/* <div className="absolute inset-0 [mask-image:radial-gradient(400px_at_center,white,transparent)] bg-black/50 dark:bg-black/90" /> */}
         </Card>
         <Card
-          title="Development & Launch"
-          icon={<AceternityIcon order="Phase 3" />}
-          des="This is where the magic happens! I rigorously test the application, optimize performance, and deploy the production-ready code, ensuring a flawless user experience."
+          title="AI Engineering"
+          icon={<AceternityIcon order="Skill 3" />}
+          des="Leveraging state-of-the-art Generative AI models, neural interfaces, and cognitive architectures to build smart agentic modules, automate developer pipelines, and deliver intelligent user experiences."
         >
           <CanvasRevealEffect
             animationSpeed={3}
@@ -89,11 +89,7 @@ const Card = ({
           "linear-gradient(90deg, rgba(4,7,29,1) 0%, rgba(12,14,35,1) 100%)",
       }}
     >
-      {/* change to h-10 w-10 , add opacity-30  */}
-      <Icon className="absolute h-10 w-10 -top-3 -left-3 dark:text-white text-black opacity-30" />
-      <Icon className="absolute h-10 w-10 -bottom-3 -left-3 dark:text-white text-black opacity-30" />
-      <Icon className="absolute h-10 w-10 -top-3 -right-3 dark:text-white text-black opacity-30" />
-      <Icon className="absolute h-10 w-10 -bottom-3 -right-3 dark:text-white text-black opacity-30" />
+
 
       <AnimatePresence>
         {hovered && (

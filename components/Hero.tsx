@@ -1,4 +1,4 @@
-import { FaLocationArrow } from "react-icons/fa6";
+import { FaLocationArrow, FaDownload } from "react-icons/fa6";
 
 import MagicButton from "./MagicButton";
 import { Spotlight } from "./ui/Spotlight";
@@ -25,8 +25,7 @@ const Hero = () => {
 
       {/**
        *  UI: grid
-       *  change bg color to bg-black-100 and reduce grid color from
-       *  0.2 to 0.03
+       *  change bg color to bg-black-100 and reduce grid color opacity
        */}
       <div
         className="h-screen w-full dark:bg-black-100 bg-white dark:bg-grid-white/[0.03] bg-grid-black-100/[0.2]
@@ -60,10 +59,10 @@ const Hero = () => {
             Hi! I&apos;m Harsha, a Next.js Developer based in Bengaluru.
           </p>
 
-          <a href="#about">
+          <a href="/resume.pdf" download="Harsha_Shetty_Resume.pdf">
             <MagicButton
-              title="Show my work"
-              icon={<FaLocationArrow />}
+              title="Get my resume"
+              icon={<FaDownload />}
               position="right"
             />
           </a>

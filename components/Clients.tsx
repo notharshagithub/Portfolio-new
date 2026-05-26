@@ -2,15 +2,55 @@
 
 import React from "react";
 
-import { companies, testimonials } from "@/data";
+import { testimonials } from "@/data";
 import { InfiniteMovingCards } from "./ui/InfiniteCards";
+import { FaGithub, FaLinkedin, FaXTwitter } from "react-icons/fa6";
+import { SiLeetcode, SiCodeforces } from "react-icons/si";
+
+const socialProfiles = [
+  {
+    id: 1,
+    name: "GitHub",
+    url: "https://github.com/notharshagithub",
+    icon: FaGithub,
+    hoverClass: "hover:border-[#CBACF9]/50 hover:shadow-[0_0_20px_rgba(203,172,249,0.25)] hover:text-[#CBACF9]",
+  },
+  {
+    id: 2,
+    name: "LinkedIn",
+    url: "https://www.linkedin.com/in/harsha-shetty-16b020314/",
+    icon: FaLinkedin,
+    hoverClass: "hover:border-[#0077b5]/50 hover:shadow-[0_0_20px_rgba(0,119,181,0.25)] hover:text-[#0077b5]",
+  },
+  {
+    id: 3,
+    name: "X",
+    url: "https://x.com/harshashetty01",
+    icon: FaXTwitter,
+    hoverClass: "hover:border-white/40 hover:shadow-[0_0_20px_rgba(255,255,255,0.2)] hover:text-white",
+  },
+  {
+    id: 4,
+    name: "LeetCode",
+    url: "https://leetcode.com/u/bdvktoLDNu/",
+    icon: SiLeetcode,
+    hoverClass: "hover:border-[#ffa116]/50 hover:shadow-[0_0_20px_rgba(255,161,22,0.25)] hover:text-[#ffa116]",
+  },
+  {
+    id: 5,
+    name: "Codeforces",
+    url: "https://codeforces.com/profile/_harsha",
+    icon: SiCodeforces,
+    hoverClass: "hover:border-[#FF5656]/50 hover:shadow-[0_0_20px_rgba(255,86,86,0.25)] hover:text-[#FF5656]",
+  },
+];
 
 const Clients = () => {
   return (
     <section id="testimonials" className="py-20">
       <h1 className="heading">
-        Kind words from
-        <span className="text-purple"> satisfied clients</span>
+        Work experience shared by
+        <span className="text-purple"> collaborated teammates</span>
       </h1>
 
       <div className="flex flex-col items-center max-lg:mt-10">
@@ -25,24 +65,24 @@ const Clients = () => {
           />
         </div>
 
-        <div className="flex flex-wrap items-center justify-center gap-4 md:gap-16 max-lg:mt-10">
-          {companies.map((company) => (
-            <React.Fragment key={company.id}>
-              <div className="flex md:max-w-60 max-w-32 gap-2">
-                <img
-                  src={company.img}
-                  alt={company.name}
-                  className="md:w-10 w-5"
-                />
-                <img
-                  src={company.nameImg}
-                  alt={company.name}
-                  width={company.id === 4 || company.id === 5 ? 100 : 150}
-                  className="md:w-24 w-20"
-                />
-              </div>
-            </React.Fragment>
-          ))}
+        <div className="flex flex-wrap items-center justify-center gap-6 md:gap-10 mt-14 max-w-5xl px-4">
+          {socialProfiles.map((profile) => {
+            const Icon = profile.icon;
+            return (
+              <a
+                key={profile.id}
+                href={profile.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`flex items-center gap-3 px-6 py-3.5 rounded-xl border border-white/10 bg-white/[0.02] backdrop-blur-md transition-all duration-300 hover:scale-105 hover:bg-white/[0.05] group ${profile.hoverClass}`}
+              >
+                <Icon className="w-6 h-6 text-white-100 transition-colors duration-300 group-hover:text-inherit" />
+                <span className="text-white-200 font-semibold text-sm md:text-base tracking-wide transition-colors duration-300 group-hover:text-white">
+                  {profile.name}
+                </span>
+              </a>
+            );
+          })}
         </div>
       </div>
     </section>
@@ -50,3 +90,4 @@ const Clients = () => {
 };
 
 export default Clients;
+
