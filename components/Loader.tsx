@@ -3,10 +3,24 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 
+/**
+ * Properties for the premium visual preloader component.
+ */
 interface LoaderProps {
+  /**
+   * Callback function triggered once loading progress reaches 100%
+   * and the exit animation transition completes.
+   */
   onComplete?: () => void;
 }
 
+/**
+ * Loader component that provides a full-screen, high-end simulated loading sequence.
+ * Features a dynamic non-linear rate simulation, ambient backlighting auroras, 
+ * star grids, and scrolling system activation logs.
+ *
+ * @param onComplete Callback invoked upon completing loading and hold duration.
+ */
 export default function Loader({ onComplete }: LoaderProps) {
   const [progress, setProgress] = useState(0);
   const [statusText, setStatusText] = useState("Initializing Core System...");
