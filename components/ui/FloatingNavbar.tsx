@@ -92,13 +92,15 @@ export const FloatingNav = ({
             href={navItem.link}
             onClick={(e) => scrollToSection(e, navItem.link)}
             className={cn(
-              "relative dark:text-neutral-50 items-center flex space-x-1 text-neutral-600 dark:hover:text-neutral-300 hover:text-neutral-500 cursor-pointer"
+              "relative dark:text-neutral-50 items-center flex space-x-1 text-neutral-600 dark:hover:text-purple hover:text-purple cursor-pointer transition-all duration-300 hover:scale-105 group"
             )}
           >
-            <span className="block sm:hidden">{navItem.icon}</span>
+            <span className="block sm:hidden text-neutral-500 group-hover:text-purple transition-colors duration-300">{navItem.icon}</span>
             {/* add !cursor-pointer */}
             {/* remove hidden sm:block for the mobile responsive */}
-            <span className=" text-sm !cursor-pointer">{navItem.name}</span>
+            <span className="text-sm !cursor-pointer font-medium tracking-wide">{navItem.name}</span>
+            {/* Hover bottom bar indicator */}
+            <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-purple transition-all duration-300 group-hover:w-full" />
           </Link>
         ))}
         {/* remove this login btn */}
