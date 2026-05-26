@@ -1,4 +1,4 @@
-# 🌌 Harsha Shetty | Premium Space-Themed Developer Portfolio
+# 🌌 Premium Space-Themed Developer Portfolio
 
 An ultra-premium, interactive developer portfolio built using **Next.js 16 (React 19)**, **TypeScript 6**, **Tailwind CSS**, and **Three.js**. Inspired by deep space aesthetics, this landing page delivers an engaging, immersive user experience utilizing rich animations, custom 3D rendering, and responsive visual design.
 
